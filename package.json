@@ -1,9 +1,9 @@
 {
-  "name": "delosian",
-  "homepage": "https://delosian.pro",
-  "description": "Delosian Digital",
-  "repository": "https://github.com/mashakos/delosian.git",
-  "author": "Delosian Digital",
+  "name": "cafefarfasha",
+  "homepage": "http://cafefarfasha.com/",
+  "description": "Cafe Farfasha",
+  "repository": "https://github.com/mashakos/cafefarfasha.git",
+  "author": "Cafe Farfasha",
   "sideEffects": false,
   "type": "module",
   "scripts": {

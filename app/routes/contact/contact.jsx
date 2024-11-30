@@ -22,7 +22,7 @@ export const meta = () => {
   return baseMeta({
     title: 'Contact',
     description:
-      'Delosian Digital Contact Page',
+      'Cafe Farfasha Contact Page',
   });
 };
 
@@ -82,10 +82,10 @@ export async function action({ context, request }) {
           },
         },
         Subject: {
-          Data: `Delosian Digital | message from ${email}`,
+          Data: `Cafe Farfasha | message from ${email}`,
         },
       },
-      Source: `Delosian Digital <${context.cloudflare.env.FROM_EMAIL}>`,
+      Source: `Cafe Farfasha <${context.cloudflare.env.FROM_EMAIL}>`,
       ReplyToAddresses: [email],
     })
   );
