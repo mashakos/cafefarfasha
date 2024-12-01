@@ -11,7 +11,7 @@ export async function loader({ request }) {
   const slug = request.url.split('/').at(-1);
   console.log(slug);
 
-  // Tina query, read using useLoaderData in app/layouts/post/drink.jsx template
+  // Tina query, read using useLoaderData in app/layouts/post/fizzy.jsx template
   const { data, query, variables } = await client.queries.drink({
     relativePath: "drinks." + slug + ".mdx",
   });

@@ -11,6 +11,9 @@ export default {
   name: "drink",
   label: "Drinks",
   path: "app/routes",
+  match: {
+    include: '**/**/drinks.**',
+  },
   format: 'mdx',
   ui: {
     router: ({ document }) => {
@@ -26,6 +29,14 @@ export default {
         return `drinks.${values?.title
           ?.toLowerCase()
           .replace(/[|&;$%@"<>()+,:]/g, "")
+          .replace(/[ŵ]/g, "w")
+          .replace(/[û]/g, "u")
+          .replace(/[ô]/g, "o")
+          .replace(/[î]/g, "i")
+          .replace(/[é]/g, "e")
+          .replace(/[ê]/g, "e")
+          .replace(/[â]/g, "a")
+          .replace(/[ŷ]/g, "y")
           .replace(/ /g, '-')}`;
       },
     },

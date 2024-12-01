@@ -45,7 +45,7 @@ export const meta = () => {
   });
 };
 
-export const CrystalBall = () => {
+export default () => {
 
   return (
     <div className={styles.home}>
@@ -211,4 +211,3 @@ export const CrystalBall = () => {
   );
 };
 
-export {CrystalBall as default};

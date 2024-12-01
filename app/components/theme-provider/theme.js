@@ -3,7 +3,7 @@ import { pxToRem } from '~/utils/style';
 // Full list of tokens
 const baseTokens = {
   black: 'oklch(0% 0 0)',
-  white: 'oklch(100% 0 0)',
+  white: 'oklch(92.87% 0.0292 89.58)',
   bezierFastoutSlowin: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
   durationXS: '200ms',
   durationS: '300ms',
@@ -33,6 +33,16 @@ const baseTokens = {
   fontSizeBodyXS: pxToRem(14),
   lineHeightTitle: '1.1',
   lineHeightBody: '1.6',
+  menuBackgroundCol: 'oklch(30.32% 0.0773 261.98)',
+  menuPaddingTop: '40px',
+  menuPaddingRight: '10px',
+  menuPaddingBottom: '10px',
+  menuPaddingLeft: '10px',
+  menuLogoPaddingTop: '0px',
+  menuLogoPaddingRight: '10px',
+  menuLogoPaddingBottom: '0px',
+  menuLogoPaddingLeft: '10px',
+  spaceMenu: '268px',
   maxWidthS: '540px',
   maxWidthM: '720px',
   maxWidthL: '1096px',
@@ -108,9 +118,9 @@ const tokensMobileSmall = {
 
 // Tokens that change based on theme
 const dark = {
-  background: 'oklch(17.76% 0 0)',
+  background: 'oklch(4.3% 0 0)',
   backgroundLight: 'oklch(21.78% 0 0)',
-  primary: 'oklch(84.42% 0.19 202.24)',
+  primary: 'oklch(30.32% 0.0773 261.98)',
   accent: 'oklch(84.42% 0.19 202.24)',
   error: 'oklch(65.91% 0.249 13.76)',
   text: 'var(--white)',

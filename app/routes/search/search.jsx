@@ -24,7 +24,7 @@ export const meta = () => {
   return baseMeta({
     title: 'Search',
     description:
-      'Delosian Digital Search Page',
+      'Cafe Farfasha Search Page',
   });
 };
 

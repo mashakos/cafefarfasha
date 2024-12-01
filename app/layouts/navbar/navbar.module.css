@@ -1,17 +1,18 @@
 @layer layout {
   .navbar {
-    --headerNavFontSize: calc((16 / 16) * 1rem);
+    --headerNavFontSize: calc((20 / 16) * 1rem);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 0;
-    width: var(--space2XL);
+    padding: var(--menuPaddingTop) var(--menuPaddingRight) var(--menuPaddingBottom) var(--menuPaddingLeft);
+    background-color: var(--menuBackgroundCol);
+    width: var(--spaceMenu);
     position: fixed;
-    top: var(--spaceOuter);
-    left: var(--spaceOuter);
-    bottom: var(--spaceOuter);
+    top: 0;
+    left: 0;
+    bottom: 0;
     z-index: var(--zIndex4);
     isolation: isolate;
 
@@ -19,15 +20,22 @@
       --headerNavFontSize: calc((22 / 16) * 1rem);
     }
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (--mediaMobile), (--mediaTablet), (--mediaMobileLS) {
+      position: relative;
+      width: 100%;
+      height: auto;
       bottom: auto;
+      background-color: unset;
     }
   }
 
   .logo {
     display: flex;
+    align-items: center;
+    flex-direction: column;
     position: relative;
-    padding: var(--spaceS) var(--spaceS) var(--spaceL);
+    width: 100%;
+    padding: var(--menuLogoPaddingTop) var(--menuLogoPaddingRight) var(--menuLogoPaddingBottom) var(--menuLogoPaddingLeft);
     z-index: var(--zIndex2);
 
     @media (--mediaMobile) {
@@ -41,19 +49,21 @@
     justify-content: space-between;
     align-items: center;
     flex: 1 1 auto;
-    max-width: var(--space2XL);
+    width: 100%;
+    max-width: var(--spaceMenu);
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (--mediaMobile), (--mediaTablet), (--mediaMobileLS) {
       display: none;
     }
   }
 
   .navList {
-    transform: rotate(180deg);
+    //transform: rotate(180deg);
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     position: relative;
-    writing-mode: vertical-lr;
+    width: 100%;
+    //writing-mode: vertical-lr;
   }
 
   .navLink {
@@ -62,10 +72,11 @@
     font-weight: var(--fontWeightMedium);
     font-size: var(--headerNavFontSize);
     text-decoration: none;
+    text-transform: uppercase;
     position: relative;
     transition: color var(--durationS) ease 0.1s;
     line-height: 1;
-    display: inline-flex;
+    display: block;
     align-items: center;
 
     &:hover,
@@ -101,13 +112,14 @@
 
   .navIcons {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: left;
     position: relative;
+    width: 100%;
     z-index: var(--zIndex2);
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (--mediaTablet), (--mediaMobile), (--mediaMobileLS) {
       flex-direction: row;
       position: absolute;
       bottom: var(--spaceXL);
@@ -161,7 +173,7 @@
     -webkit-backdrop-filter: var(--backdrop);
     backdrop-filter: var(--backdrop);
 
-    @media (--mediaMobile), (--mediaMobileLS) {
+    @media (--mediaTablet), (--mediaMobile), (--mediaMobileLS) {
       display: flex;
     }
 
@@ -198,7 +210,7 @@
       top: auto;
     }
 
-    @media (--mediaMobileS), (max-height: 360px) {
+    @media (--mediaTablet), (--mediaMobileS), (max-height: 360px) {
       --headerNavFontSize: calc((18 / 16) * 1rem);
     }
 

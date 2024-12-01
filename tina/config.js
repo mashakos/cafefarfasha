@@ -1,5 +1,8 @@
 import { defineConfig } from "tinacms";
 import Drink from "./collections/drink.jsx";
+import HotBeverage from "./collections/hotbeverage.jsx";
+import Hookah from "./collections/hookah.jsx";
+import Fizzy from "./collections/fizzy.jsx";
 
 
 // Your hosting provider likely exposes this as an environment variable
@@ -30,6 +33,6 @@ export default defineConfig({
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
-    collections: [Drink],
+    collections: [Drink, HotBeverage, Hookah, Fizzy],
   },
 });

@@ -12,21 +12,26 @@ import {
 import { createCookieSessionStorage, json } from '@remix-run/cloudflare';
 import { ThemeProvider, themeStyles } from '~/components/theme-provider';
 import GothamBook from '~/assets/fonts/gotham-book.woff2';
-import GothamMedium from '~/assets/fonts/gotham-medium.woff2';
-import { useEffect } from 'react';
+import Poppins from '~/assets/fonts/poppins-regular.woff2';
+import { useEffect, useRef } from 'react';
 import { Error } from '~/layouts/error';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Navbar } from '~/layouts/navbar';
 import { Progress } from '~/components/progress';
+import {HomeBackground} from  '~/components/search';
 import config from '~/config.json';
 import styles from './root.module.css';
 import './reset.module.css';
 // import './global.module.css';
+import { useParallax } from '~/hooks';
+import backgroundSpr from '~/assets/main-bg.webp';
+import backgroundSprLarge from '~/assets/main-bg-large.webp';
+import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
 
 export const links = () => [
   {
     rel: 'preload',
-    href: GothamMedium,
+    href: Poppins,
     as: 'font',
     type: 'font/woff2',
     crossOrigin: '',
@@ -118,6 +123,13 @@ export default function App() {
       </head>
       <body data-theme={theme}>
         <ThemeProvider theme={theme} toggleTheme={toggleTheme}>
+          <HomeBackground
+            opacity={0.5}
+            src={backgroundSpr}
+            srcSet={`${backgroundSpr} 1080w, ${backgroundSprLarge} 2160w`}
+            placeholder={backgroundSprPlaceholder}
+          />
+
           <Progress />
           <VisuallyHidden showOnFocus as="a" className={styles.skip} href="#main-content">
             Skip to main content

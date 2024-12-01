@@ -2,20 +2,24 @@ import config from '~/config.json';
 
 export const navLinks = [
   {
-    label: 'Search',
-    pathname: '/search',
+    label: 'Fizzy Drinks',
+    pathname: '/searchfizzy',
   },
   {
-    label: 'Projects',
-    pathname: '/projects',
+    label: 'drinks & cocktails',
+    pathname: '/searchdrinkscocktails',
+  },
+  {
+    label: 'hot beverages',
+    pathname: '/searchhotbeverages',
   },
   // {
   //   label: 'Details',
   //   pathname: '/#details',
   // },
   {
-    label: 'Articles',
-    pathname: '/articles',
+    label: 'hookahs & extras',
+    pathname: '/searchhookahs',
   },
   {
     label: 'Contact',
@@ -25,18 +29,18 @@ export const navLinks = [
 
 export const socialLinks = [
   {
+    label: 'Instagram',
+    url: `${config.instagram}`,
+    icon: 'instagram',
+  },
+  {
+    label: 'Facebook',
+    url: `${config.facebook}`,
+    icon: 'facebook',
+  },
+  {
     label: 'Twitter',
     url: `https://twitter.com/${config.twitter}`,
     icon: 'twitter',
-  },
-  // {
-  //   label: 'Figma',
-  //   url: `https://www.figma.com/${config.figma}`,
-  //   icon: 'figma',
-  // },
-  {
-    label: 'Github',
-    url: `https://github.com/${config.github}`,
-    icon: 'github',
   },
 ];

@@ -1,7 +1,7 @@
 @layer components {
   .section {
-    padding-right: var(--space5XL);
-    padding-left: calc(var(--space4XL) * 2);
+    padding-right: 0;
+    padding-left: var(--spaceMenu);
 
     &:focus {
       outline: none;
@@ -12,7 +12,8 @@
     }
 
     @media (--mediaTablet) {
-      padding-left: calc(var(--space4XL) + var(--space3XL));
+      padding-left: var(--spaceOuter);
+      padding-right: var(--spaceOuter);
     }
 
     @media (--mediaMobile) {

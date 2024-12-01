@@ -9,9 +9,20 @@
   align-items: start;
   width: 100%;
 
-  @media (--mediaMobile) {
+  @media (--mediaTablet), (--mediaMobile) {
+    overflow-x: clip;
     padding-top: 0;
     grid-template-columns: 85%;
+  }
+
+  @media (max-width: 1560px) {
+    padding-top: 0;
+    grid-template-columns: 60%;
+  }
+
+  @media (max-width: 1280px) {
+    padding-top: 0;
+    grid-template-columns: 90%;
   }
 }
 
@@ -316,3 +327,4 @@
     animation: fade-in var(--durationL) ease var(--durationXL) forwards;
   }
 }
+

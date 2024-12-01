@@ -1,6 +1,6 @@
 
-export async function indexPosts() {
-  const modules = import.meta.glob('../articles.*.mdx', { eager: true });
+export async function indexDrinks() {
+  const modules = import.meta.glob('../drinks.*.mdx', { eager: true });
   const build = await import('virtual:remix/server-build');
 
   const posts = await Promise.all(
@@ -9,25 +9,92 @@ export async function indexPosts() {
       let slug = build.routes[id].path;
       if (slug === undefined) throw new Error(`No route for ${id}`);
 
-      const text = await import(`../articles.${slug}.mdx?raw`);
-      const bodyText = text.default;
-
-
-
       return {
         title: post.frontmatter.title,
         abstract: post.frontmatter.abstract,
         banner: post.frontmatter.banner,
-        date: post.frontmatter.date,
-        body: bodyText,
-        slug: `/articles/${slug}`,
+        price: post.frontmatter.price,
+        slug: `/drinks/${slug}`,
         frontmatter: post.frontmatter,
       };
     })
   );
 
-  return sortBy(posts, post => post.frontmatter.date, 'desc');
+  return sortBy(posts, post => post.frontmatter.price, 'desc');
 }
+
+export async function indexHotBeverages() {
+  const modules = import.meta.glob('../hotbeverages.*.mdx', { eager: true });
+  const build = await import('virtual:remix/server-build');
+
+  const posts = await Promise.all(
+    Object.entries(modules).map(async ([file, post]) => {
+      let id = file.replace('../', 'routes/').replace(/\.mdx$/, '');
+      let slug = build.routes[id].path;
+      if (slug === undefined) throw new Error(`No route for ${id}`);
+
+      return {
+        title: post.frontmatter.title,
+        abstract: post.frontmatter.abstract,
+        banner: post.frontmatter.banner,
+        price: post.frontmatter.price,
+        slug: `/hotbeverages/${slug}`,
+        frontmatter: post.frontmatter,
+      };
+    })
+  );
+
+  return sortBy(posts, post => post.frontmatter.price, 'desc');
+}
+
+export async function indexHookahs() {
+  const modules = import.meta.glob('../hookahs.*.mdx', { eager: true });
+  const build = await import('virtual:remix/server-build');
+
+  const posts = await Promise.all(
+    Object.entries(modules).map(async ([file, post]) => {
+      let id = file.replace('../', 'routes/').replace(/\.mdx$/, '');
+      let slug = build.routes[id].path;
+      if (slug === undefined) throw new Error(`No route for ${id}`);
+
+      return {
+        title: post.frontmatter.title,
+        abstract: post.frontmatter.abstract,
+        banner: post.frontmatter.banner,
+        price: post.frontmatter.price,
+        slug: `/hookahs/${slug}`,
+        frontmatter: post.frontmatter,
+      };
+    })
+  );
+
+  return sortBy(posts, post => post.frontmatter.price, 'desc');
+}
+
+export async function indexFizzy() {
+  const modules = import.meta.glob('../fizzy.*.mdx', { eager: true });
+  const build = await import('virtual:remix/server-build');
+
+  const posts = await Promise.all(
+    Object.entries(modules).map(async ([file, post]) => {
+      let id = file.replace('../', 'routes/').replace(/\.mdx$/, '');
+      let slug = build.routes[id].path;
+      if (slug === undefined) throw new Error(`No route for ${id}`);
+
+      return {
+        title: post.frontmatter.title,
+        abstract: post.frontmatter.abstract,
+        banner: post.frontmatter.banner,
+        price: post.frontmatter.price,
+        slug: `/fizzy/${slug}`,
+        frontmatter: post.frontmatter,
+      };
+    })
+  );
+
+  return sortBy(posts, post => post.frontmatter.price, 'desc');
+}
+
 
 function sortBy(arr, key, dir = 'asc') {
   return arr.sort((a, b) => {

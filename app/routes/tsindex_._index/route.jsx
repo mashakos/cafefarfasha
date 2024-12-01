@@ -82,6 +82,6 @@ export async function action({request}) {
     }
   }
 
-  // return json({ text : 'Post:' + postId + ' Indexed.', data: returnedData });
-  return json({ text : 'Post:' + postId + ' Indexed.', id: postId });
+  // return json({ text : 'Fizzy:' + postId + ' Indexed.', data: returnedData });
+  return json({ text : 'Fizzy:' + postId + ' Indexed.', id: postId });
 }

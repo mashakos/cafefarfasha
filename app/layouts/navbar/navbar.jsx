@@ -144,7 +144,7 @@ export const Navbar = () => {
       <RouterLink
         unstable_viewTransition
         prefetch="intent"
-        to={location.pathname === '/' ? '/#intro' : '/'}
+        to="/"
         data-navbar-item
         className={styles.logo}
         aria-label={`${config.name}, ${config.role}`}

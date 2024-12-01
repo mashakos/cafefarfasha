@@ -20,7 +20,7 @@ export default {
     {
       type: "reference",
       name: "post",
-      label: "Featured Post",
+      label: "Featured Fizzy",
       collections: ['post'],
       required: true,
     },

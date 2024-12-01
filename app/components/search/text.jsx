@@ -24,6 +24,37 @@ import { Input } from '~/components/input/index.js';
 import { Section } from '~/components/section/index.js';
 import { useFormInput } from '~/hooks/index.js';
 import { formatDate } from '~/utils/date.js';
+import { Image } from '~/components/image';
+import { media } from '~/utils/style';
+import { forwardRef, useRef } from 'react';
+import { useParallax } from '~/hooks';
+
+export const HomeBackground = ({ opacity = 0.7, className, ...rest }) => {
+  const imageRef = useRef();
+
+  useParallax(0.5, value => {
+    if (!imageRef.current) return;
+    imageRef.current.style.setProperty('--offset', `${value}px`);
+  });
+
+  return (
+    <Transition in timeout={msToNum(tokens.base.durationM)}>
+      {({ visible, nodeRef }) => (
+        <div
+          className={classes(styles.backgroundImage, className)}
+          data-visible={visible}
+          ref={nodeRef}
+        >
+          <div className={styles.backgroundImageElement} ref={imageRef}>
+            <Image cover alt="" role="presentation" {...rest} />
+          </div>
+          <div className={styles.backgroundScrim} style={cssProps({ opacity })} />
+        </div>
+      )}
+    </Transition>
+  );
+};
+
 
 export const Text = ({
   children,
@@ -69,49 +100,87 @@ function CustomHits(props) {
   };
 
   return (
+    [
+      <>
+        {hits.length > 0 &&
+          <>
+            <div className={styles.searchGroupContainer}>
+          <span className={styles.searchGroupLeftBorder}>
+                  <span className={styles.searchGroupIcon}></span>
+        <span className={styles.searchGroupLine}></span>
+
+        </span>
+              <Heading as='h2' level={4} className={styles.searchGroupHeading}>
+                {(hits.length > 0) ? (hits[0].slug.indexOf('drinks') >= 0 ? `drinks & cocktails` : hits[0].slug.indexOf('hotbeverage') >= 0 ? `hot beverages` : hits[0].slug.indexOf('hookah') >= 0 ? `hookahs & extras` : `fizzy drinks`) : ``}
+                {/*{(hits) ? hits[0].slug.indexOf("drinks") >= 0 ? `drinks & cocktails` : hits[0].slug.indexOf("hotbeverage") >= 0 ? `hot beverages` : `hookas & extras` : `` }*/}
+              </Heading>
+              <span className={styles.searchGroupRightBorder}>
+        <span className={styles.searchGroupIcon}></span>
+                  <span className={styles.searchGroupLine}></span>
+        </span>
+            </div>
+          </>
+        }
+      </>,
     hits.map((hit, index) => (
       <article
         className={styles.post}
         style={index !== undefined ? cssProps({ delay: index * 100 + 200 }) : undefined}
         // style={undefined}
       >
-        <RouterLink
-          unstable_viewTransition
-          prefetch="intent"
-          // to={hit.slug.indexOf(projectUrlFragment) > 0 ? `${hit.slug}` : `/articles/${hit.slug}`}
-          to={hit.slug}
-          className={styles.postLink}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
           <div className={styles.postDetails}>
-            <div aria-hidden className={styles.postDate}>
-              <Divider notchWidth="64px" notchHeight="8px" />
-              {hit.date &&
-                formatDate(hit.date)}
-            </div>
-            <Heading as="h2" level={4}>
-              <Highlight attribute="title" hit={hit} />
-              {/*{hit.title}*/}
-            </Heading>
-            <Text size={'s'} as="p">
-              {hit.abstract &&
-                <Highlight attribute="abstract" hit={hit} />
-              }
-              {hit.description &&
-                <Highlight attribute="description" hit={hit} />
-              }
-              {/*{hit.abstract}*/}
-            </Text>
-            <div className={styles.postFooter}>
-              <Button secondary iconHoverShift icon="chevron-right" as="div" type="button">
-                {hit.slug.indexOf(projectUrlFragment) >= 0 ? `View Project` : `Read article`}
-              </Button>
+            <div className={styles.hitContainer}>
+              <Image
+                className={styles.hitImage}
+                srcSet={`${encodeURI(hit.banner)} 350w, ${encodeURI(hit.banner)} 700w`}
+                width={109}
+                height={109}
+                placeholder={encodeURI(hit.banner)}
+                alt="Internet Explorer 7."
+                sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
+              />
+              <div className={styles.hitTitleWrapper}>
+                 {/*Inside auto layout */}
+                  {/* Title auto layout */}
+                    {/* Title */}
+                      <div className={styles.hitTitleContainer}>
+                        <Heading as="h2" level={4} className={styles.hitTitle}>
+                          <Highlight attribute="title" hit={hit} />
+                          {/*{hit.title}*/}
+                        </Heading>
+                      </div>
+                    {/* Dots */}
+                    <div className={styles.hitTitleDotsContainer}>
+                      {/* Dots */}
+                      <div className={styles.hitTitleDots}>
+                      </div>
+                    </div>
+                    {/* Price */}
+                <div className={styles.hitTitlePriceContainer}>
+                  <div className={styles.hitTitlePrice}>
+                    <Heading as="h3" level={4}>
+                      {hit.price}
+                    </Heading>
+                  </div>
+                </div>
+
+              </div>
+              <div className={styles.hitAbstractContainer}>
+                <Text size={'s'} as="p">
+                  {hit.abstract &&
+                    <Highlight attribute="abstract" hit={hit} />
+                  }
+                  {hit.description &&
+                    <Highlight attribute="description" hit={hit} />
+                  }
+                  {/*{hit.abstract}*/}
+                </Text>
+              </div>
             </div>
           </div>
-        </RouterLink>
       </article>
-    ))
+    )),
+      ]
   );
 }
 
@@ -143,7 +212,7 @@ function CustomSearchBox({ queries, ...props }) {
             data-status={status}
             style={getDelay(tokens.base.durationS, initDelay)}
             autoComplete="off"
-            label="Search"
+            label="SEARCH"
             name="search"
             type="search"
             maxLength={MAX_MESSAGE_LENGTH}
@@ -183,7 +252,7 @@ export const TextSearch = () => {
     return (
       <InstantSearch
         className={styles.form}
-        indexName='post'
+        indexName='drink'
         searchClient={searchAdapter.searchClient}
         future={{ preserveSharedStateOnUnmount: true }}
       >
@@ -191,7 +260,13 @@ export const TextSearch = () => {
         {/*<SearchAndFilter />*/}
         <CustomSearchBox className={styles.input} />
         <CustomHits />
-        <Index indexName="project">
+        <Index indexName="hotbeverage">
+          <CustomHits />
+        </Index>
+        <Index indexName="fizzy">
+          <CustomHits />
+        </Index>
+        <Index indexName="hookah">
           <CustomHits />
         </Index>
       </InstantSearch>

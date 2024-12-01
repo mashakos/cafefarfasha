@@ -1,1 +1,1 @@
-export { TextSearch } from './text';
+export { TextSearch, HomeBackground } from './text';

@@ -42,8 +42,8 @@ const texture2Placeholder = '';
 const roles = [
   'UX and UI Design',
   'Full Stack Development',
-  'Search Engine Back End Development',
-  'Search Engine Optimisation',
+  'Fizzy Engine Back End Development',
+  'Fizzy Engine Optimisation',
 ];
 
 export const meta = () => {

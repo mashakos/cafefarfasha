@@ -18,9 +18,9 @@ export function Error({ error }) {
     switch (error.status) {
       case 404:
         return {
-          summary: 'Error: redacted',
+          summary: 'Error: not found',
           message:
-            'This page could not be found. It either doesn’t exist or was deleted. Or perhaps you don’t exist and this webpage couldn’t find you.',
+            'This page could not be found. Please contact us if you believe this page should be working.',
         };
       case 405:
         return {
@@ -123,6 +123,7 @@ export function Error({ error }) {
               </div>
             </div>
 
+{/*
             <div className={styles.videoContainer} data-visible={visible}>
               <Image
                 reveal
@@ -155,6 +156,7 @@ export function Error({ error }) {
                 </a>
               )}
             </div>
+*/}
           </>
         )}
       </Transition>

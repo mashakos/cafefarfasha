@@ -1,11 +1,12 @@
 {
-  "name": "Delosian",
-  "role": "Digital",
+  "name": "Cafe Farfasha",
+  "role": "",
   "disciplines": ["Design", "Creative", "Media", "Mobile", "DevOps"],
-  "url": "https://delosian.pro",
-  "twitter": "DelosianDigital",
-  "figma": "",
-  "github": "mashakos",
-  "repo": "https://github.com/mashakos/delosian",
+  "url": "https://cafefarfasha.com",
+  "twitter": "cafefarfasha",
+  "instagram": "https://www.instagram.com/farfashaegypt",
+  "facebook": "https://www.facebook.com/profile.php?id=61564976816646&sk=about",
+  "github": "",
+  "repo": "",
   "ascii": "\u0020 \u005F \u005F\n \u007C \u0020 \u0020 \u005C\n \u007C \u0020 \u005F \u0020 \u005C\n \u007C \u007C \u0020 \u005C \u0020 \u005C\n \u007C \u0020 \u005F \u002F \u0020 \u002F\n \u007C \u0020 \u0020 \u0020 \u002F\n \u0020 \uFE4B\n"
 }

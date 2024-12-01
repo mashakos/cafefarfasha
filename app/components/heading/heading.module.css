@@ -1,5 +1,6 @@
 @layer components {
   .heading {
+    text-transform: uppercase;
     line-height: var(--lineHeightTitle);
     color: var(--textTitle);
 

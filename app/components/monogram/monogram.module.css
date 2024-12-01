@@ -1,8 +1,31 @@
 @layer components {
   .monogram {
+    width: 100%;
     fill: var(--textTitle);
     transition: fill var(--durationL) ease;
+
+    @media (--mediaMobile), (--mediaMobileLS) {
+      max-width: 410px;
+      height: auto;
+    }
   }
+
+  .cls1 {
+    fill: #FF0800;
+  }
+
+  .cls1, .cls2, .cls3 {
+    stroke-width: 0px;
+  }
+
+  .cls2 {
+    fill: #F46600;
+  }
+
+  .cls3 {
+    fill: #F46600;
+  }
+
 
   .highlight {
     fill: var(--accent);

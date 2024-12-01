@@ -10,7 +10,7 @@ import client from 'tina/__generated__/client.js';
 export async function loader({ request }) {
   const slug = request.url.split('/').at(-1);
 
-  // Tina query, read using useLoaderData in app/layouts/post/post.jsx template
+  // Tina query, read using useLoaderData in app/layouts/post/fizzy.jsx template
   const { data, query, variables } = await client.queries.post({
     relativePath: "articles." + slug + ".mdx",
   });

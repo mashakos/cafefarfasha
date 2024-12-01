@@ -16,14 +16,23 @@ export const typesenseInstantsearchAdapter = () =>
       ],
     },
     collectionSpecificSearchParameters: {
-      post: {
-        query_by: 'title, abstract, body',
+      fizzy: {
+        query_by: 'title, abstract',
+        sort_by: 'price: desc',
       },
-      project: {
-        query_by: 'title, description, body, roles',
+      drink: {
+        query_by: 'title, abstract',
+        sort_by: 'price: desc',
+      },
+      hotbeverage: {
+        query_by: 'title, abstract',
+        sort_by: 'price: desc',
+      },
+      hookah: {
+        query_by: 'title, abstract',
+        sort_by: 'price: desc',
       },
     },
-
     //   additionalSearchParameters: {
     //   query_by: 'title, abstract, body',
     //   num_typos: 0,

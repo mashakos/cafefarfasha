@@ -1,5 +1,5 @@
 import { baseMeta } from '~/utils/meta';
-import { indexPosts, indexProjects } from './typesense.server.js';
+import { indexDrinks, indexHotBeverages, indexHookahs, indexFizzy } from './typesense.server.js';
 import { json } from '@remix-run/cloudflare';
 import Typesense from 'typesense';
 
@@ -19,120 +19,115 @@ export async function loader() {
   });
 
 
-  // post schema
+  // drink schema
   try {
-    await typesenseClient.collections('post').retrieve();
-    console.log('Found existing collection of post');
+    await typesenseClient.collections('drink').retrieve();
+    console.log('Found existing collection of drink');
 
     console.log('Deleting collection');
-    await typesenseClient.collections('post').delete();
+    await typesenseClient.collections('drink').delete();
   } catch (err) {
     console.error(err);
   }
 
 
   {
-    let postSchema = {
-      'name': 'post',
+    let drinkSchema = {
+      'name': 'drink',
       'fields': [
         {'name': 'title', 'type': 'string' },
         {'name': 'abstract', 'type': 'string' },
         {'name': 'banner', 'type': 'image' },
-        {'name': 'date', 'type': 'int64' },
-        {'name': 'body', 'type': 'string' },
+        {'name': 'price', 'type': 'int32' },
         {'name': 'slug', 'type': 'string' },
       ],
     };
 
-    typesenseClient.collections().create(postSchema)
+    typesenseClient.collections().create(drinkSchema)
       .then(function (data) {
         console.log(data);
       });
   }
 
 
-  const indexedPosts = await indexPosts();
-  let postData = [];
+  const indexedDrinks = await indexDrinks();
+  let drinkData = [];
 
-  indexedPosts.map(function(indexedPost){
+  indexedDrinks.map(function(indexedDrink){
 
-    const bodyStrContent = indexedPost.body;
-
-    let unixdate = new Date(indexedPost.date).getTime();
-    postData.push({
-      title: indexedPost.title,
-      abstract: indexedPost.abstract,
-      banner: indexedPost.banner,
-      date: unixdate,
-      body: bodyStrContent,
-      slug: indexedPost.slug,
+    drinkData.push({
+      title: indexedDrink.title,
+      abstract: indexedDrink.abstract,
+      banner: indexedDrink.banner,
+      price: indexedDrink.price,
+      slug: indexedDrink.slug,
     });
 
   });
 
   try {
     const returnData = await typesenseClient
-      .collections("post")
+      .collections("drink")
       .documents()
-      .import(postData, {action: 'create'});
+      .import(drinkData, {action: 'create'});
 
     console.log('Return data: ', returnData);
   } catch (err) {
     console.error(err);
   }
 
-  // projects schema
 
+// hotbeverage schema
   try {
-    await typesenseClient.collections('project').retrieve();
-    console.log('Found existing collection of project');
+    await typesenseClient.collections('hotbeverage').retrieve();
+    console.log('Found existing collection of hotbeverage');
 
     console.log('Deleting collection');
-    await typesenseClient.collections('project').delete();
+    await typesenseClient.collections('hotbeverage').delete();
   } catch (err) {
     console.error(err);
   }
 
 
   {
-    let projectSchema = {
-      'name': 'project',
+    let hotbeverageSchema = {
+      'name': 'hotbeverage',
       'fields': [
         {'name': 'title', 'type': 'string' },
-        {'name': 'description', 'type': 'string' },
-        {'name': 'body', 'type': 'string' },
-        {'name': 'roles', 'type': 'string' },
+        {'name': 'abstract', 'type': 'string' },
+        {'name': 'banner', 'type': 'image' },
+        {'name': 'price', 'type': 'int32' },
         {'name': 'slug', 'type': 'string' },
       ],
     };
 
-    typesenseClient.collections().create(projectSchema)
+    typesenseClient.collections().create(hotbeverageSchema)
       .then(function (data) {
         console.log(data);
       });
   }
 
 
-  const indexedProjects = await indexProjects();
-  let projectData = [];
+  const indexedHotBeverages = await indexHotBeverages();
+  let hotbeverageData = [];
 
-  indexedProjects.map(function(indexedProject){
-    projectData.push({
-      title: indexedProject.title,
-      description: indexedProject.description,
-      body: indexedProject.bodytext,
-      roles: indexedProject.roles,
-      slug: indexedProject.slug,
+  indexedHotBeverages.map(function(indexedHotBeverage){
+
+    hotbeverageData.push({
+      title: indexedHotBeverage.title,
+      abstract: indexedHotBeverage.abstract,
+      banner: indexedHotBeverage.banner,
+      price: indexedHotBeverage.price,
+      slug: indexedHotBeverage.slug,
     });
-  });
 
-  //console.log(JSON.stringify(projectData));
+  });
 
   try {
     const returnData = await typesenseClient
-      .collections("project")
+      .collections("hotbeverage")
       .documents()
-      .import(projectData, {action: 'create'});
+      .import(hotbeverageData, {action: 'create'});
 
     console.log('Return data: ', returnData);
   } catch (err) {
@@ -140,14 +135,193 @@ export async function loader() {
   }
 
 
+// hookah schema
+  try {
+    await typesenseClient.collections('hookah').retrieve();
+    console.log('Found existing collection of hookah');
+
+    console.log('Deleting collection');
+    await typesenseClient.collections('hookah').delete();
+  } catch (err) {
+    console.error(err);
+  }
+
+
+  {
+    let hookahSchema = {
+      'name': 'hookah',
+      'fields': [
+        {'name': 'title', 'type': 'string' },
+        {'name': 'abstract', 'type': 'string' },
+        {'name': 'banner', 'type': 'image' },
+        {'name': 'price', 'type': 'int32' },
+        {'name': 'slug', 'type': 'string' },
+      ],
+    };
+
+    typesenseClient.collections().create(hookahSchema)
+      .then(function (data) {
+        console.log(data);
+      });
+  }
+
+
+  const indexedHookahs = await indexHookahs();
+  let hookahData = [];
+
+  indexedHookahs.map(function(indexedHookah){
+
+    hookahData.push({
+      title: indexedHookah.title,
+      abstract: indexedHookah.abstract,
+      banner: indexedHookah.banner,
+      price: indexedHookah.price,
+      slug: indexedHookah.slug,
+    });
+
+  });
+
+  try {
+    const returnData = await typesenseClient
+      .collections("hookah")
+      .documents()
+      .import(hookahData, {action: 'create'});
+
+    console.log('Return data: ', returnData);
+  } catch (err) {
+    console.error(err);
+  }
+
+
+// fizzy schema
+  try {
+    await typesenseClient.collections('fizzy').retrieve();
+    console.log('Found existing collection of fizzy');
+
+    console.log('Deleting collection');
+    await typesenseClient.collections('fizzy').delete();
+  } catch (err) {
+    console.error(err);
+  }
+
+
+  {
+    let fizzySchema = {
+      'name': 'fizzy',
+      'fields': [
+        {'name': 'title', 'type': 'string' },
+        {'name': 'abstract', 'type': 'string' },
+        {'name': 'banner', 'type': 'image' },
+        {'name': 'price', 'type': 'int32' },
+        {'name': 'slug', 'type': 'string' },
+      ],
+    };
+
+    typesenseClient.collections().create(fizzySchema)
+      .then(function (data) {
+        console.log(data);
+      });
+  }
+
+
+  const indexedFizzys = await indexFizzy();
+  let fizzyData = [];
+
+  indexedFizzys.map(function(indexedFizzy){
+
+    fizzyData.push({
+      title: indexedFizzy.title,
+      abstract: indexedFizzy.abstract,
+      banner: indexedFizzy.banner,
+      price: indexedFizzy.price,
+      slug: indexedFizzy.slug,
+    });
+
+  });
+
+  try {
+    const returnData = await typesenseClient
+      .collections("fizzy")
+      .documents()
+      .import(fizzyData, {action: 'create'});
+
+    console.log('Return data: ', returnData);
+  } catch (err) {
+    console.error(err);
+  }
+
+
+
+
+  /*
+    // projects schema
+
+    try {
+      await typesenseClient.collections('project').retrieve();
+      console.log('Found existing collection of project');
+
+      console.log('Deleting collection');
+      await typesenseClient.collections('project').delete();
+    } catch (err) {
+      console.error(err);
+    }
+
+
+    {
+      let projectSchema = {
+        'name': 'project',
+        'fields': [
+          {'name': 'title', 'type': 'string' },
+          {'name': 'description', 'type': 'string' },
+          {'name': 'body', 'type': 'string' },
+          {'name': 'roles', 'type': 'string' },
+          {'name': 'slug', 'type': 'string' },
+        ],
+      };
+
+      typesenseClient.collections().create(projectSchema)
+        .then(function (data) {
+          console.log(data);
+        });
+    }
+
+
+    const indexedProjects = await indexProjects();
+    let projectData = [];
+
+    indexedProjects.map(function(indexedProject){
+      projectData.push({
+        title: indexedProject.title,
+        description: indexedProject.description,
+        body: indexedProject.bodytext,
+        roles: indexedProject.roles,
+        slug: indexedProject.slug,
+      });
+    });
+
+    //console.log(JSON.stringify(projectData));
+
+    try {
+      const returnData = await typesenseClient
+        .collections("project")
+        .documents()
+        .import(projectData, {action: 'create'});
+
+      console.log('Return data: ', returnData);
+    } catch (err) {
+      console.error(err);
+    }
+  */
+
+
   // end of typesense test
 
-  return json({ text : 'Posts, Projects Indexed.' });
+  return json({ text : 'Drinks, Hot Beveragse, Fizzy Indexed.' });
 }
 
 export function meta() {
   return baseMeta({
-    title: 'Search Index',
+    title: 'Fizzy Index',
     description:
       'Typesense index.',
   });

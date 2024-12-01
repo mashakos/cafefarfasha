@@ -73,7 +73,7 @@ export const Post = ({ children, timecode }) => {
         </>
       );
     },
-    // postMarkdown component styles MD tags as html elements
+    // fizzyMarkdown component styles MD tags as html elements
     ...postMarkdown,
   };
 

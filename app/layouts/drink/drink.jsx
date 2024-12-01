@@ -68,7 +68,7 @@ export const Drink = ({ children, timecode }) => {
         </>
       );
     },
-    // drinkMarkdown component styles MD tags as html elements
+    // fizzyMarkdown component styles MD tags as html elements
     ...postMarkdown,
   };
 
