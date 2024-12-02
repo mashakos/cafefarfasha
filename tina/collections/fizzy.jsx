@@ -50,7 +50,7 @@ export default {
       formData.append("abstract", values.abstract);
       formData.append("price", values.price);
       formData.append("slug", postSlug);
-      formData.append("collection", "drink");
+      formData.append("collection", "fizzy");
 
       try {
         const response = await fetch("/tsindex", {
