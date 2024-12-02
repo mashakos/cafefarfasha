@@ -11,11 +11,11 @@ export async function action({request}) {
   const requestData = await request.formData();
   //form fields
   const title = requestData.get("title");
-  const date = new Date(requestData.get("date")).getTime();
   const banner = requestData.get("banner");
   const abstract = requestData.get("abstract");
-  const bodydata = requestData.get("body");
+  const price = requestData.get("price") | 0;
   const postSlug = requestData.get("slug");
+  const postCollection = requestData.get("collection");
   let postId = 0;
 
   let typesenseClient = new Typesense.Client({
@@ -34,7 +34,7 @@ export async function action({request}) {
       'q'         : '*',
       "filter_by": `slug:=${postSlug}`,
     };
-    await typesenseClient.collections('post').documents().search(searchParameters).then(function (data) {
+    await typesenseClient.collections(postCollection).documents().search(searchParameters).then(function (data) {
       if(data.found !== 0)
       {
         // only one result should be retrieved.
@@ -51,11 +51,10 @@ export async function action({request}) {
         'title': title,
         'abstract': abstract,
         'banner': banner,
-        'date': date,
-        'body': bodydata,
+        'price': price,
         'slug': postSlug,
       };
-      await typesenseClient.collections('post').documents().upsert(
+      await typesenseClient.collections(postCollection).documents().upsert(
         postDocument,
         {"filter_by": `slug:=${postSlug}`}
       ).then(function (data) {
@@ -68,11 +67,10 @@ export async function action({request}) {
         'title': title,
         'abstract': abstract,
         'banner': banner,
-        'date': date,
-        'body': bodydata,
+        'price': price,
         'slug': postSlug,
       };
-      await typesenseClient.collections('post').documents().create(
+      await typesenseClient.collections(postCollection).documents().create(
         postDocument
       ).then(function (data) {
         // get id after indexed post is created
@@ -83,5 +81,5 @@ export async function action({request}) {
   }
 
   // return json({ text : 'Fizzy:' + postId + ' Indexed.', data: returnedData });
-  return json({ text : 'Fizzy:' + postId + ' Indexed.', id: postId });
+  return json({ text : 'Menu Entry:' + postId + ' Indexed.', id: postId });
 }
