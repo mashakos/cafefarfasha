@@ -26,7 +26,7 @@ import './reset.module.css';
 import { useParallax } from '~/hooks';
 import backgroundSpr from '~/assets/main-bg.webp';
 import backgroundSprLarge from '~/assets/main-bg-large.webp';
-import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
+import backgroundSprPlaceholder from '~/assets/main-bg-placeholder.webp';
 
 export const links = () => [
   {

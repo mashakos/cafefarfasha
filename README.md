@@ -1,10 +1,10 @@
-# Delosian Digital
+# Cafe Farfasha
 
 [![Site preview](/public/site-preview.png)](https://delosian.pro)
 
-Inspired by the mystical tales of Leto from Greek Mythology and the boundless possibilities of technology, Delosian Digital invites you to explore our journey through the intersection of creativity and innovation.
+Fusion Western and Arabian cuisine. Support your favourite team while enjoying our renowned coffe selections!
 
-Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/).
+Built with [Remix](https://remix.run/) and [Framer Motion](https://www.framer.com/motion/).
 
 ## Install & run
 
