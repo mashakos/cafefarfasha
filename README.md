@@ -1,6 +1,6 @@
 # Cafe Farfasha
 
-[![Site preview](/public/site-preview.png)](https://delosian.pro)
+[![Site preview](/public/site-preview.png)](https://cafefarfasha.com)
 
 Fusion Western and Arabian cuisine. Support your favourite team while enjoying our renowned coffe selections!
 

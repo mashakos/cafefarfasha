@@ -6,6 +6,6 @@ addons.setConfig({
     ...themes.dark,
     brandImage: './icon.svg',
     brandTitle: 'Hamish Williams Components',
-    brandUrl: 'https://delosian.pro',
+    brandUrl: 'https://cafefarfasha.com',
   },
 });
