@@ -22,9 +22,9 @@ import styles from './search.module.css';
 
 export const meta = () => {
   return baseMeta({
-    title: 'Search',
+    title: 'Cafe Farfasha',
     description:
-      'Cafe Farfasha Search Page',
+      'Fusion western and arabian cuisine. Support your favourite team while enjoying our great selection of coffees, drinks and hookah!',
   });
 };
 
