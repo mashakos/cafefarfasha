@@ -82,8 +82,7 @@ function CustomHits(props) {
 
         </span>
               <Heading as='h2' level={4} className={styles.searchGroupHeading}>
-                {(hits.length > 0) ? (hits[0].slug.indexOf('drinks') >= 0 ? `drinks & cocktails` : hits[0].slug.indexOf('hotbeverage') >= 0 ? `hot beverages` : `hookas & extras`) : ``}
-                {/*{(hits) ? hits[0].slug.indexOf("drinks") >= 0 ? `drinks & cocktails` : hits[0].slug.indexOf("hotbeverage") >= 0 ? `hot beverages` : `hookas & extras` : `` }*/}
+                hookahs & extras
               </Heading>
               <span className={styles.searchGroupRightBorder}>
         <span className={styles.searchGroupIcon}></span>
@@ -101,51 +100,56 @@ function CustomHits(props) {
         >
           <div className={styles.postDetails}>
             <div className={styles.hitContainer}>
-              <Image
-                className={styles.hitImage}
-                srcSet={`${encodeURI(hit.banner)} 350w, ${encodeURI(hit.banner)} 700w`}
-                width={109}
-                height={109}
-                placeholder={encodeURI(hit.banner)}
-                alt="Internet Explorer 7."
-                sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
-              />
-              <div className={styles.hitTitleWrapper}>
-                {/*Inside auto layout */}
-                {/* Title auto layout */}
-                {/* Title */}
-                <div className={styles.hitTitleContainer}>
-                  <Heading as="h2" level={4} className={styles.hitTitle}>
-                    <Highlight attribute="title" hit={hit} />
-                    {/*{hit.title}*/}
-                  </Heading>
-                </div>
-                {/* Dots */}
-                <div className={styles.hitTitleDotsContainer}>
-                  {/* Dots */}
-                  <div className={styles.hitTitleDots}>
-                  </div>
-                </div>
-                {/* Price */}
-                <div className={styles.hitTitlePriceContainer}>
-                  <div className={styles.hitTitlePrice}>
-                    <Heading as="h3" level={4}>
-                      {hit.price}
+              <div className={styles.imageGridContainer}>
+                <Image
+                  className={styles.hitImage}
+                  srcSet={`${encodeURI(hit.banner)} 350w, ${encodeURI(hit.banner)} 700w`}
+                  width={109}
+                  height={109}
+                  placeholder={encodeURI(hit.banner)}
+                  alt="Internet Explorer 7."
+                  sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
+                />
+              </div>
+              <div className={styles.abstractGridContainer}>
+                <div className={styles.hitTitleWrapper}>
+                  {/*Inside auto layout */}
+                  {/* Title auto layout */}
+                  {/* Title */}
+                  <div className={styles.hitTitleContainer}>
+                    <Heading as="h2" level={4} className={styles.hitTitle}>
+                      <Highlight attribute="title" hit={hit} />
+                      {/*{hit.title}*/}
                     </Heading>
                   </div>
+                  {/* Dots */}
+                  <div className={styles.hitTitleDotsContainer}>
+                    {/* Dots */}
+                    <div className={styles.hitTitleDots}>
+                    </div>
+                  </div>
+                  {/* Price */}
+                  <div className={styles.hitTitlePriceContainer}>
+                    <div className={styles.hitTitlePrice}>
+                      <Heading as="h4" level={4}>
+                        {hit.price}
+                      </Heading>
+                    </div>
+                  </div>
+
+                </div>
+                <div className={styles.hitAbstractContainer}>
+                  <Text size={'s'} as="p">
+                    {hit.abstract &&
+                      <Highlight attribute="abstract" hit={hit} />
+                    }
+                    {hit.description &&
+                      <Highlight attribute="description" hit={hit} />
+                    }
+                    {/*{hit.abstract}*/}
+                  </Text>
                 </div>
 
-              </div>
-              <div className={styles.hitAbstractContainer}>
-                <Text size={'s'} as="p">
-                  {hit.abstract &&
-                    <Highlight attribute="abstract" hit={hit} />
-                  }
-                  {hit.description &&
-                    <Highlight attribute="description" hit={hit} />
-                  }
-                  {/*{hit.abstract}*/}
-                </Text>
               </div>
             </div>
           </div>

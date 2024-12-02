@@ -1,3 +1,22 @@
+@property --background1 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+/*noinspection ALL*/
+@property --background2 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+@property --background3 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
 .search {
     --formHeight: 60px;
 
@@ -11,7 +30,7 @@
     padding: 0;
 
     label {
-        color: oklch(62.93% 0.2563 29.48) !important;
+        color: oklch(67.91% 0.19389586825344152 45.07817925367532) !important;
         font-size: var(--fontSizeH4);
     }
 
@@ -717,7 +736,7 @@
     justify-content: center;
     align-items: center;
     padding: 0px;
-    gap: 16px;
+    gap: 2.1%;
 
     width: 100%;
     height: 145px;
@@ -728,10 +747,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 7px 0px;
+    padding: 0.438rem 0;
 
-    width: 61.31px;
-    height: 25.31px;
+    width: 2.832rem;
+    height: 1.582rem;
 }
 
 .searchGroupRightBorder{
@@ -739,23 +758,23 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 7px 0px;
+    padding: 0.438rem 0;
 
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 
-    width: 61.31px;
-    height: 25.31px;
+    width: 2.832rem;
+    height: 1.582rem;
 }
 
 /* Icon */
 
 .searchGroupIcon {
     box-sizing: border-box;
-    width: 8px;
-    height: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
     /* border/default */
-    border: 1px solid rgba(239, 231, 210, 0.15);
+    border: 0.063rem solid rgba(239, 231, 210, 0.15);
     transform: rotate(-45deg);
     /* Inside auto layout */
     flex: none;
@@ -766,8 +785,8 @@
 /* Line */
 
 .searchGroupLine{
-    width: 50px;
-    height: 1px;
+    width: 3.125rem;
+    height: 0.063rem;
 
     /* border/default */
     background: rgba(239, 231, 210, 0.15);
@@ -784,7 +803,7 @@
 
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 120%;
     /* identical to box height, or 24px */
     letter-spacing: 1px;
@@ -792,23 +811,41 @@
 
     /* text/default */
     color: #EFE7D2;
+    @media (--mediaMobile), (--mediaMobileLS){
+        font-size: 0.875rem;
+    }
 }
 
 
 .hitContainer {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 14.7% 80.3%;
     height: 114px;
     margin-bottom: 32px;
+    @media (--mediaMobile), (--mediaMobileLS){
+        grid-template-columns: 30% 70%;
+    }
+}
+
+.abstractGridContainer{
+    display: grid;
+    width: 110%;
+    grid-template-columns: 100%;
+    padding-left: 5%;
 
 }
 
-.hitImage {
-    position: relative;
-    float: left;
-    margin-right: 30px;
-    inset: 0;
+.imageGridContainer{
     display: grid;
-    width: 109px;
-    height: 109px;
+    max-width: 109px;
+    max-height: 109px;
+}
+
+.hitImage {
+    inset: 0;
+    width: 100%;
+    height: 100%;
     place-content: stretch;
     overflow: hidden;
     isolation: isolate;
@@ -864,7 +901,7 @@
     gap: 16px;
 
     max-width: 633px;
-    height: 26px;
+    height: 53.853211%;
 }
 
 .hitTitleContainer{
@@ -876,10 +913,10 @@
 
 .hitTitle{
     width: auto;
-    height: 26px;
+    height: 1.625rem;
 
     /* heading/h5 */
-    font-size: 22px;
+    font-size: 1.375rem;
     line-height: 120%;
     /* or 26px */
     letter-spacing: 1px;
@@ -887,18 +924,21 @@
 
     /* text/default */
     color: #EFE7D2;
+    @media (--mediaMobile), (--mediaMobileLS){
+        font-size: 0.875rem;
+    }
 }
 
 .hitTitleDotsContainer{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding: 4px 0px;
+//padding: 4px 0px;
     gap: 10px;
 
     margin: 0 auto;
     width: auto;
-    height: 9px;
+    height: 34.61538461538462%;
 
 
     /* Inside auto layout */
@@ -943,9 +983,78 @@
 
     /* text/default */
     color: #EFE7D2;
+    h4{
+        font-size: 1.375rem;
+        @media (--mediaMobile), (--mediaMobileLS){
+            font-size: 0.875rem;
+        }
+    }
 }
 
 .hitAbstractContainer{
     max-width: 100%;
     padding-right: 10%;
+    p{
+        @media (--mediaMobile), (--mediaMobileLS){
+            font-size: 0.875rem;
+        }
+    }
+}
+
+.backgroundImage {
+    --imageHeight: 1024px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 268px;
+    height: var(--imageHeight);
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 2s ease;
+    transform: translateZ(0);
+    isolation: isolate;
+
+    &[data-visible='true'] {
+        opacity: 1;
+    }
+
+    @media (--mediaMobile), (--mediaTablet), (--mediaMobileLS){
+        left: 0;
+    }
+}
+
+.backgroundImageElement {
+    z-index: var(--zIndex0);
+    position: absolute;
+    inset: 0;
+    height: var(--imageHeight);
+    overflow: hidden;
+    will-change: transform;
+    display: grid;
+
+    img,
+    video {
+        height: var(--imageHeight);
+    }
+
+    @media (--mediaUseMotion) {
+        transform: translate3d(0, var(--offset), 0);
+    }
+}
+
+.backgroundScrim {
+    --background1: color-mix(in lab, var(--background) 30%, transparent);
+    --background2: var(--background);
+
+    position: absolute;
+    inset: 0;
+    transition: var(--durationM) ease;
+    transition-property: --background1, --background2;
+    z-index: var(--zIndex1);
+    background: linear-gradient(var(--background1), var(--background2));
+
+    @supports (background: linear-gradient(in lab, red, red)) {
+        background: linear-gradient(in lab, var(--background1), var(--background2));
+    }
 }

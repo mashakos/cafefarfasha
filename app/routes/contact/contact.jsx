@@ -121,11 +121,7 @@ export const Contact = () => {
             >
               <DecoderText text="Say hello" start={status !== 'exited'} delay={300} />
             </Heading>
-            <Divider
-              className={styles.divider}
-              data-status={status}
-              style={getDelay(tokens.base.durationXS, initDelay, 0.4)}
-            />
+
             {/* Hidden honeypot field to identify bots */}
             <Input
               className={styles.botkiller}

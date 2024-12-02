@@ -120,8 +120,8 @@ const tokensMobileSmall = {
 const dark = {
   background: 'oklch(4.3% 0 0)',
   backgroundLight: 'oklch(21.78% 0 0)',
-  primary: 'oklch(30.32% 0.0773 261.98)',
-  accent: 'oklch(84.42% 0.19 202.24)',
+  primary: 'oklch(62.93% 0.2563 29.48)',
+  accent: 'oklch(62.95% 0.2561 29.51)',
   error: 'oklch(65.91% 0.249 13.76)',
   text: 'var(--white)',
   textTitle: 'var(--text)',

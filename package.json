@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "build": "tinacms build && remix vite:build",
-    "dev": "npx tinacms dev -c \"node ./scripts/dev.cjs && remix vite:dev\"",
+    "dev": "npx tinacms dev -c \"node ./scripts/dev.cjs && remix vite:dev --host\"",
     "start": "wrangler pages dev ./build/client",
     "postinstall": "node ./scripts/draco.cjs",
     "deploy": "npm run build && wrangler pages deploy ./build/client --project-name delosian",

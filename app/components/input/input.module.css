@@ -2,7 +2,7 @@
   .container {
     --inputFontSize: calc((16 / 16) * 1rem);
     --inputFocusColor: var(--primary);
-    --inputUnderlineColor: color-mix(in lab, var(--text) 20%, transparent);
+    --inputUnderlineColor: color-mix(in lab, var(--text) 40%, transparent);
 
     position: relative;
     display: flex;
