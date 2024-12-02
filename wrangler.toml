@@ -8,5 +8,5 @@ compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2024-10-15"
 
 [[env.production.kv_namespaces]]
-id = "12035954d5f34578ab51022223570ffd"
+id = "de42892d703dda712da2617bb471343f"
 binding = "MY_KV"
