@@ -88,7 +88,7 @@
     &::after {
       content: '';
       position: absolute;
-      top: 50%;
+      top: 80%;
       inset-inline-start: var(--spaceS);
       inset-inline-end: var(--spaceS);
       block-size: 4px;
