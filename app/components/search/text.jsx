@@ -261,7 +261,7 @@ export const TextSearch = () => {
         searchClient={searchAdapter.searchClient}
         future={{ preserveSharedStateOnUnmount: true }}
       >
-        <Configure hitsPerPage={12} />
+        <Configure hitsPerPage={100} />
         {/*<SearchAndFilter />*/}
         <CustomSearchBox className={styles.input} />
         <CustomHits />
