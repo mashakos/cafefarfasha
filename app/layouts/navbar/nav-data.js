@@ -6,11 +6,11 @@ export const navLinks = [
     pathname: '/searchfizzy',
   },
   {
-    label: 'drinks & cocktails',
+    label: 'Drinks & Cocktails',
     pathname: '/searchdrinkscocktails',
   },
   {
-    label: 'hot beverages',
+    label: 'Hot Beverages',
     pathname: '/searchhotbeverages',
   },
   // {
@@ -18,7 +18,7 @@ export const navLinks = [
   //   pathname: '/#details',
   // },
   {
-    label: 'hookahs & extras',
+    label: 'Hookahs & Extras',
     pathname: '/searchhookahs',
   },
   {
