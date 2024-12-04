@@ -32,7 +32,7 @@ const EMAIL_PATTERN = /(.+)@(.+){2,}\.(.+){2,}/;
 
 export async function action({ context, request }) {
   const ses = new SESClient({
-    region: 'us-east-1',
+    region: 'eu-north-1',
     credentials: {
       accessKeyId: context.cloudflare.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: context.cloudflare.env.AWS_SECRET_ACCESS_KEY,
@@ -211,7 +211,7 @@ export const Contact = () => {
               data-status={status}
               style={getDelay(tokens.base.durationXS)}
             >
-              I’ll get back to you within a couple days, sit tight
+              Thank you for getting in touch. We will respond to you shortly.
             </Text>
             <Button
               secondary
