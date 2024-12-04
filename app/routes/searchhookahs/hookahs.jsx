@@ -22,9 +22,9 @@ import styles from './hookahs.module.css';
 
 export const meta = () => {
   return baseMeta({
-    title: 'drinks & cocktails',
+    title: 'Hookahs & Extras Menu',
     description:
-      'Cafe Farfasha drinks & cocktails Page',
+      'Cafe Farfasha Fizzy Drinks Menu Page',
   });
 };
 

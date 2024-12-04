@@ -22,9 +22,9 @@ import styles from './fizzy.module.css';
 
 export const meta = () => {
   return baseMeta({
-    title: 'drinks & cocktails',
+    title: 'Fizzy Drinks Menu',
     description:
-      'Cafe Farfasha drinks & cocktails Page',
+      'Cafe Farfasha Fizzy Drinks Menu Page',
   });
 };
 

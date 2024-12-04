@@ -22,9 +22,9 @@ import styles from './hotbeverages.module.css';
 
 export const meta = () => {
   return baseMeta({
-    title: 'drinks & cocktails',
+    title: 'Hot Beverages Menu',
     description:
-      'Cafe Farfasha drinks & cocktails Page',
+      'Cafe Farfasha Hot Beverages Menu Page',
   });
 };
 

@@ -22,7 +22,7 @@ import styles from './search.module.css';
 
 export const meta = () => {
   return baseMeta({
-    title: 'Cafe Farfasha',
+    title: 'EAST HUB Madinaty',
     description:
       'Fusion western and arabian cuisine. Support your favourite team while enjoying our great selection of coffees, drinks and hookah!',
   });
