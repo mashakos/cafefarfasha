@@ -30,12 +30,12 @@ export const navLinks = [
 export const socialLinks = [
   {
     label: 'Instagram',
-    url: `${config.instagram}`,
+    url: `https://www.instagram.com/${config.instagram}`,
     icon: 'instagram',
   },
   {
     label: 'Facebook',
-    url: `${config.facebook}`,
+    url: `https://www.facebook.com/${config.facebook}`,
     icon: 'facebook',
   },
   {
