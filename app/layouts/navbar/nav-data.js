@@ -43,4 +43,9 @@ export const socialLinks = [
     url: `https://twitter.com/${config.twitter}`,
     icon: 'twitter',
   },
+  {
+    label: 'Tiktok',
+    url: `https://tiktok.com/${config.tiktok}`,
+    icon: 'tiktok',
+  },
 ];
