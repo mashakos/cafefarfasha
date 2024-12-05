@@ -32,14 +32,7 @@ export default {
         postSlug = `/drinks/${values?.title
           ?.toLowerCase()
           .replace(/[|&;$%@"<>()+,:]/g, "")
-          .replace(/[ŵ]/g, "w")
-          .replace(/[û]/g, "u")
-          .replace(/[ô]/g, "o")
-          .replace(/[î]/g, "i")
-          .replace(/[é]/g, "e")
-          .replace(/[ê]/g, "e")
-          .replace(/[â]/g, "a")
-          .replace(/[ŷ]/g, "y")
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
           .replace(/ /g, '-')}`;
       else
         postSlug = form.id.replace('app/routes/drinks.', '/drinks/').replace(/\.mdx$/, '');
@@ -86,14 +79,7 @@ export default {
         return `drinks.${values?.title
           ?.toLowerCase()
           .replace(/[|&;$%@"<>()+,:]/g, "")
-          .replace(/[ŵ]/g, "w")
-          .replace(/[û]/g, "u")
-          .replace(/[ô]/g, "o")
-          .replace(/[î]/g, "i")
-          .replace(/[é]/g, "e")
-          .replace(/[ê]/g, "e")
-          .replace(/[â]/g, "a")
-          .replace(/[ŷ]/g, "y")
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
           .replace(/ /g, '-')}`;
       },
     },
