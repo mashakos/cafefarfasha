@@ -13,6 +13,10 @@ export const navLinks = [
     label: 'Hot Beverages',
     pathname: '/searchhotbeverages',
   },
+  {
+    label: 'Desserts',
+    pathname: '/searchdesserts',
+  },
   // {
   //   label: 'Details',
   //   pathname: '/#details',

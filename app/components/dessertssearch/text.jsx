@@ -26,46 +26,17 @@ import { useFormInput } from '~/hooks/index.js';
 import { formatDate } from '~/utils/date.js';
 import { Image } from '~/components/image';
 import { media } from '~/utils/style';
-import { forwardRef, useRef } from 'react';
-import { useParallax } from '~/hooks';
-
-export const HomeBackground = ({ opacity = 0.7, className, ...rest }) => {
-  const imageRef = useRef();
-
-  useParallax(0.5, value => {
-    if (!imageRef.current) return;
-    imageRef.current.style.setProperty('--offset', `${value}px`);
-  });
-
-  return (
-    <Transition in timeout={msToNum(tokens.base.durationM)}>
-      {({ visible, nodeRef }) => (
-        <div
-          className={classes(styles.backgroundImage, className)}
-          data-visible={visible}
-          ref={nodeRef}
-        >
-          <div className={styles.backgroundImageElement} ref={imageRef}>
-            <Image cover alt="" role="presentation" {...rest} />
-          </div>
-          <div className={styles.backgroundScrim} style={cssProps({ opacity })} />
-        </div>
-      )}
-    </Transition>
-  );
-};
-
 
 export const Text = ({
-  children,
-  size = 'm',
-  as: Component = 'span',
-  align = 'auto',
-  weight = 'auto',
-  secondary,
-  className,
-  ...rest
-}) => {
+                       children,
+                       size = 'm',
+                       as: Component = 'span',
+                       align = 'auto',
+                       weight = 'auto',
+                       secondary,
+                       className,
+                       ...rest
+                     }) => {
   return (
     <Component
       className={classes(styles.text, className)}
@@ -111,8 +82,7 @@ function CustomHits(props) {
 
         </span>
               <Heading as='h2' level={4} className={styles.searchGroupHeading}>
-                {(hits.length > 0) ? (hits[0].slug.indexOf('drinks') >= 0 ? `drinks & cocktails` : hits[0].slug.indexOf('hotbeverage') >= 0 ? `hot beverages` : hits[0].slug.indexOf('dessert') >= 0 ? `desserts` : hits[0].slug.indexOf('hookah') >= 0 ? `hookahs & extras` : hits[0].slug.indexOf('fizzy') >= 0 ? `fizzy drinks` : ``) : ``}
-                {/*{(hits) ? hits[0].slug.indexOf("drinks") >= 0 ? `drinks & cocktails` : hits[0].slug.indexOf("hotbeverage") >= 0 ? `hot beverages` : `hookas & extras` : `` }*/}
+                desserts
               </Heading>
               <span className={styles.searchGroupRightBorder}>
         <span className={styles.searchGroupIcon}></span>
@@ -122,12 +92,12 @@ function CustomHits(props) {
           </>
         }
       </>,
-    hits.map((hit, index) => (
-      <article
-        className={styles.post}
-        style={index !== undefined ? cssProps({ delay: index * 100 + 200 }) : undefined}
-        // style={undefined}
-      >
+      hits.map((hit, index) => (
+        <article
+          className={styles.post}
+          style={index !== undefined ? cssProps({ delay: index * 100 + 200 }) : undefined}
+          // style={undefined}
+        >
           <div className={styles.postDetails}>
             <div className={styles.hitContainer}>
               <div className={styles.imageGridContainer}>
@@ -183,9 +153,9 @@ function CustomHits(props) {
               </div>
             </div>
           </div>
-      </article>
-    )),
-      ]
+        </article>
+      )),
+    ]
   );
 }
 
@@ -257,7 +227,7 @@ export const TextSearch = () => {
     return (
       <InstantSearch
         className={styles.form}
-        indexName='drink'
+        indexName='dessert'
         searchClient={searchAdapter.searchClient}
         future={{ preserveSharedStateOnUnmount: true }}
       >
@@ -265,18 +235,6 @@ export const TextSearch = () => {
         {/*<SearchAndFilter />*/}
         <CustomSearchBox className={styles.input} />
         <CustomHits />
-        <Index indexName="hotbeverage">
-          <CustomHits />
-        </Index>
-        <Index indexName="dessert">
-          <CustomHits />
-        </Index>
-        <Index indexName="fizzy">
-          <CustomHits />
-        </Index>
-        <Index indexName="hookah">
-          <CustomHits />
-        </Index>
       </InstantSearch>
     );
   } else {

@@ -96,6 +96,31 @@ export async function indexFizzy() {
 }
 
 
+export async function indexDesserts() {
+  const modules = import.meta.glob('../desserts.*.mdx', { eager: true });
+  const build = await import('virtual:remix/server-build');
+
+  const posts = await Promise.all(
+    Object.entries(modules).map(async ([file, post]) => {
+      let id = file.replace('../', 'routes/').replace(/\.mdx$/, '');
+      let slug = build.routes[id].path;
+      if (slug === undefined) throw new Error(`No route for ${id}`);
+
+      return {
+        title: post.frontmatter.title,
+        abstract: post.frontmatter.abstract,
+        banner: post.frontmatter.banner,
+        price: post.frontmatter.price,
+        slug: `/desserts/${slug}`,
+        frontmatter: post.frontmatter,
+      };
+    })
+  );
+
+  return sortBy(posts, post => post.frontmatter.price, 'desc');
+}
+
+
 function sortBy(arr, key, dir = 'asc') {
   return arr.sort((a, b) => {
     const res = compare(key(a), key(b));

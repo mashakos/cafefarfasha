@@ -3,6 +3,7 @@ import Drink from "./collections/drink.jsx";
 import HotBeverage from "./collections/hotbeverage.jsx";
 import Hookah from "./collections/hookah.jsx";
 import Fizzy from "./collections/fizzy.jsx";
+import Dessert from "./collections/dessert.jsx";
 
 
 // Your hosting provider likely exposes this as an environment variable
@@ -33,6 +34,6 @@ export default defineConfig({
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
-    collections: [Drink, HotBeverage, Hookah, Fizzy],
+    collections: [Drink, HotBeverage, Hookah, Fizzy, Dessert],
   },
 });

@@ -1,5 +1,5 @@
 import { baseMeta } from '~/utils/meta';
-import { indexDrinks, indexHotBeverages, indexHookahs, indexFizzy } from './typesense.server.js';
+import { indexDrinks, indexHotBeverages, indexHookahs, indexFizzy, indexDesserts } from './typesense.server.js';
 import { json } from '@remix-run/cloudflare';
 import Typesense from 'typesense';
 
@@ -250,6 +250,63 @@ export async function loader() {
     console.error(err);
   }
 
+
+// dessert schema
+  try {
+    await typesenseClient.collections('dessert').retrieve();
+    console.log('Found existing collection of dessert');
+
+    console.log('Deleting collection');
+    await typesenseClient.collections('dessert').delete();
+  } catch (err) {
+    console.error(err);
+  }
+
+
+  {
+    let dessertSchema = {
+      'name': 'dessert',
+      'fields': [
+        {'name': 'title', 'type': 'string' },
+        {'name': 'abstract', 'type': 'string' },
+        {'name': 'banner', 'type': 'image' },
+        {'name': 'price', 'type': 'int32' },
+        {'name': 'slug', 'type': 'string' },
+      ],
+    };
+
+    typesenseClient.collections().create(dessertSchema)
+      .then(function (data) {
+        console.log(data);
+      });
+  }
+
+
+  const indexedDesserts = await indexDesserts();
+  let dessertData = [];
+
+  indexedDesserts.map(function(indexedDessert){
+
+    dessertData.push({
+      title: indexedDessert.title,
+      abstract: indexedDessert.abstract,
+      banner: indexedDessert.banner,
+      price: indexedDessert.price,
+      slug: indexedDessert.slug,
+    });
+
+  });
+
+  try {
+    const returnData = await typesenseClient
+      .collections("dessert")
+      .documents()
+      .import(dessertData, {action: 'create'});
+
+    console.log('Return data: ', returnData);
+  } catch (err) {
+    console.error(err);
+  }
 
 
 
