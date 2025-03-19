@@ -373,7 +373,7 @@ export async function loader() {
 
   // end of typesense test
 
-  return json({ text : 'Drinks, Hot Beveragse, Fizzy Indexed.' });
+  return json({ text : 'Drinks, Hot Beveragse, Fizzy, Dessert Indexed.' });
 }
 
 export function meta() {

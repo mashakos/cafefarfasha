@@ -137,7 +137,7 @@ function CustomHits(props) {
                   width={109}
                   height={109}
                   placeholder={encodeURI(hit.banner)}
-                  alt="Internet Explorer 7."
+                  alt={hit.title}
                   sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
                 />
               </div>

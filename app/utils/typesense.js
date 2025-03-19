@@ -16,6 +16,10 @@ export const typesenseInstantsearchAdapter = () =>
       ],
     },
     collectionSpecificSearchParameters: {
+      dessert: {
+        query_by: 'title, abstract',
+        sort_by: 'price: desc',
+      },
       fizzy: {
         query_by: 'title, abstract',
         sort_by: 'price: desc',
